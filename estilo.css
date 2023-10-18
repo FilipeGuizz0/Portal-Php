@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit&family=Oswald:wght@500&family=Teko:wght@500&display=swap');
+body{
+    background-color: #afb7ca;
+}
+#caixaMenu{
+    width: 400px;
+    height: 400px;
+    background-color: #ffffff;
+    margin: auto;
+    border: 2px solid #000000;
+}
+#tituloMenu{
+    width: 400px;
+    height: 100px;
+    background-color: #ff720d;
+    text-align: center;
+    border-bottom: 2px solid #000000;
+    padding-top: 10px;
+}
+.logo{
+    width: 190px;
+    height: 80px;
+}
+#opcaoMenu{
+    width: 400px;
+    height: 288px;
+    background-color: #ffffff;
+    text-align: center;
+    font-size: 23px;
+    font-family: teko; 
+}
+a:link {
+    text-decoration: none;
+    color: rgb(2, 33, 102);
+}
+a:visited{
+    color: rgb(19, 49, 184);
+}
+a:hover{
+    color: rgb(53, 88, 201);
+}
+#loginMenu{
+    width: 400px;
+    height: 431px;
+    background-color: #ffffff;
+    margin: auto;
+    border: 2px solid #000000;
+}

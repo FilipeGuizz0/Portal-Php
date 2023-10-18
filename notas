@@ -1,0 +1,173 @@
+<div class="dropdown">
+  <span>Mouse over me</span>
+  <div class="dropdown-content">
+  <p><div id="form">
+    <table>
+        <tr>
+            <td width=400 height=20>
+                <form name="modelo" method="post" action="portal.php"> 
+                    Categorias: <select name="codcategoria" id="codcategoria">
+                        <option value=0 selected="selected">Selecione categoria ...</option>
+                        <?php
+                        if(mysql_num_rows($pega_categorias) == 0)
+                        {
+                           echo '<h1>Sua busca por categorias não retornou resultados ... </h1>';
+                        }
+                        else
+                        {
+                          while($resultado = mysql_fetch_array($pega_categorias))
+                          {
+                             echo '<option value="'.$resultado['codigo'].'">'.
+                                                    $resultado['nome'].'</option>';
+                          }
+                        }
+                        ?>
+                        </select>
+                        <input type="submit" name="pesq_categoria" id="pesq_categoria" value="Pesquisar">
+                        </form>
+                </form>
+            <td>
+        </tr>
+        <tr>
+            <td width=400 height=20>
+                <form name="colunista" method="post" action="portal.php"> 
+                    Marcas: <select name="codcolunista" id="codcolunista">
+                        <option value=0 selected="selected">Selecione o colunista ...</option>
+                        <?php
+                        if(mysql_num_rows($pega_colunistas) == 0)
+                        {
+                           echo '<h1>Sua busca por colunistas não retornou resultados ... </h1>';
+                        }
+                        else
+                        {
+                          while($resultado = mysql_fetch_array($pega_colunistas))
+                          {
+                             echo '<option value="'.$resultado['codigo'].'">'.
+                                                    $resultado['nome'].'</option>';
+                          }
+                        }
+                        ?>
+                        </select>
+                        <input type="submit" name="pesq_colunista" id="pesq_colunista" value="pesquisar">
+                </form>
+            <td>
+        </tr>
+        <tr>
+            <td width=400 height=20>
+                <form name="regiao" method="post" action="portal.php"> 
+                    Regiões: <select name="codregiao" id="codregiao">
+                        <option value=0 selected="selected">Selecione a região...</option>
+                        <?php
+                        if(mysql_num_rows($pega_regiao) == 0)
+                        {
+                           echo '<h1>Sua busca por região não retornou resultados ... </h1>';
+                        }
+                        else
+                        {
+                          while($resultado = mysql_fetch_array($pega_regiao))
+                          {
+                             echo '<option value="'.$resultado['codigo'].'">'.
+                                                    $resultado['nome'].'</option>';
+                          }
+                        }
+                        ?>
+                        </select>
+                        <input type="submit" name="pesq_regiao" id="pesq_regiao" value="pesquisar">
+                </form>
+            </td>
+        </tr>
+    </table>
+  </p>
+  </div>
+</div>
+<br>
+        <?php
+        
+        if ($vazio == 0)
+        {
+        $sql_materias = "select fotochamada, data, hora, chamada
+                        from materias
+                        ORDER BY data LIMIT 2";
+
+        $seleciona_materias = mysql_query($sql_materias);
+        ?>
+        <table border=0>
+        <tr align ="center">
+        <th><b><h1>Noticias em Destaque: </h1></b></th>
+        </tr>
+        <?php
+        
+        echo '<tr>';
+        while($res = mysql_fetch_array($seleciona_materias))
+                {
+                echo '<td><a href="materiacompleta.php">'.utf8_encode('<img src="'.$res['fotochamada'].'"  height="150" width="250" />').'</a><br>';
+                echo $res['data'].' - '. $res['hora'].'<br>';
+                echo utf8_encode($res['chamada']).'</td>';
+                }
+        echo '</tr>';
+        }
+        else
+        {
+        echo "<br>";
+        echo "<b><h1>Noticias pesquisadas: </h1></b>"."<br><br>";
+        echo '<tr>';
+        while($res = mysql_fetch_array($seleciona_materias))
+                {
+                echo '<td><a href="materiacompleta.php">'.utf8_encode('<img src="'.$res['fotochamada'].'"  height="150" width="250" />').'</a><br>';
+                echo $res['data'].' - '. $res['hora'].'<br>';
+                echo utf8_encode($res['chamada']).'</td>';
+                }
+        echo '</tr>';
+        }
+        ?>
+
+
+
+
+
+
+
+
+
+
+
+
+<?php
+        
+        if ($vazio == 0)
+        {
+        $sql_materias = "select fotochamada, data, hora, chamada
+                        from materias
+                        ORDER BY data LIMIT 2";
+
+        $seleciona_materias = mysql_query($sql_materias);
+        ?>
+        <table border=0  height= 400px width= 800px>
+        <tr align ="center">
+        <th><b><h1>Noticias em Destaque: </h1></b></th>
+        </tr>
+        <?php
+        
+        echo '<tr>';
+        while($res = mysql_fetch_array($seleciona_materias))
+                {
+                echo '<td><a href="materiacompleta.php">'.utf8_encode('<img src="'.$res['fotochamada'].'"  height="150" width="250" />').'</a><br>';
+                echo $res['data'].' - '. $res['hora'].'<br>';
+                echo utf8_encode($res['chamada']).'</td>';
+                }
+        echo '</tr>';
+        }
+        else
+        {
+        echo "<br>";
+        echo "<b><h1>Noticias pesquisadas: </h1></b>"."<br><br>";
+        echo '<tr>';
+        while($res = mysql_fetch_array($seleciona_materias))
+                {
+                echo '<td><a href="materiacompleta.php">'.utf8_encode('<img src="'.$res['fotochamada'].'"  height="150" width="250" />').'</a><br>';
+                echo $res['data'].' - '. $res['hora'].'<br>';
+                echo utf8_encode($res['chamada']).'</td>';
+                }
+        echo '</tr>';
+        }
+        ?>
